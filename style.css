@@ -1,3 +1,10 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 :root{
   --accent:#ff7a00;
   --ink:#111;
@@ -13,7 +20,7 @@ html, body {
 }
 
 body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  
   color:var(--ink);
   background:#fff;
   overflow:hidden;
@@ -26,7 +33,25 @@ body{
   left: 0;
   right: 0;
   height: min-content;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: var(--accent);
+  display: flex;
+  
+  
+
 }
+#hora, #dia{
+  color:#6b7280
+}
+
+#reloj{
+font-family: IBM plex mono, monospace;
+font-weight: 500;
+font-size: 20px;
+
+}
+
 
 section{
   height: 100vh;
@@ -35,19 +60,44 @@ section{
 .box_type_slim{
   border: 3px solid var(--border);
   border-radius: 15px;
+  font-family: IBM plex mono, monospace;
+  font-weight: 600;
+  color:#6b7280
+
+
 }
 
 .nav_item{
  height: 100%;
+   min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  
+  
 }
+
+.nav_item:hover{
+  background-color: #ff7a00;
+  color: white; 
+  transition: 0.5s;
+
+}
+
+
+
 
 .btn_encode{
   border:3px solid var(--accent);
-  background-color: #11111100;
+  background-color: #16b34500;
   color: var(--ink);
   padding: 10px;
   border-radius: 15px;
   transition: all ease 0.5s;
+  
 }
 
 .btn_encode:hover{
@@ -55,6 +105,13 @@ section{
   color: white;
 }
 
-#reloj{
+@media screen {
+  #reloj{
+   font-size: medium; display: block;
+  }
 
+
+  
 }
+
+
