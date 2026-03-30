@@ -8,28 +8,56 @@
   --radius:18px;
 }
 
-html, body { 
-  height:100%; 
-}
-
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--ink);
-  background:#fff;
+  background:
+    linear-gradient(rgba(229, 231, 235, 0.75) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 231, 235, 0.75) 1px, transparent 1px),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  background-size: 86px 86px, 86px 86px, auto;
   overflow:hidden;
   position: relative;
 }
 
 #nav_superior{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: min-content;
+  height: 10vh;
+  padding: 0 20px 0 20px;
+  background-color: #00000000;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo_main{
+  font-size: 3rem;
+  font-weight: bolder;
+  color: var(--accent);
+}
+
+#reloj{
+  font-size: 15pt;
+  color: var(--muted);
+  font-weight: bolder;
+}
+
+#titulo{
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--muted);
+}
+
+#nav_superior>div{
+  width: 50%;
+}
+
+#nav_superior div:last-child{
+  text-align: right;
 }
 
 section{
-  height: 100vh;
+  height: 80vh;
+  padding: 0 20px 0 20px;
 }
 
 .box_type_slim{
@@ -55,6 +83,308 @@ section{
   color: white;
 }
 
-#reloj{
-
+#servicios{
+  background-color: #00000000;
 }
+
+.services-stage{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+  background-color: #00000000;
+}
+
+.services-mobile-head{
+  display: none;
+}
+
+.service-showcase{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 0.75rem;
+}
+
+.service-node{
+  position: absolute;
+  top: -0.2rem;
+  left: 0.15rem;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #d7d7d7;
+  border: 2px solid #bdbdbd;
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 2;
+}
+
+.service-card{
+  min-height: clamp(260px, 35vw, 370px);
+  width: 80%;
+  padding: clamp(2.4rem, 5vw, 3.2rem) clamp(1.3rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2rem);
+  border: 4px solid #d0d0d0;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-card_content{
+  max-width: 760px;
+}
+
+.service-card_title{
+  margin: 0 0 0.8rem;
+  color: var(--accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 0.95;
+  font-weight: 400;
+  max-width: 620px;
+}
+
+.service-card_description{
+  margin: 0;
+  color: #6f6f6f;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.35;
+}
+
+.service-card_description span{
+  margin-left: 0.35rem;
+}
+
+.service-card_description-note{
+  color: #808080;
+}
+
+.service-card_list{
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  color: #777777;
+  font-size: clamp(1.45rem, 2vw, 2.05rem);
+  line-height: 1.25;
+  font-weight: 300;
+}
+
+.service-card_list li + li{
+  margin-top: 0.35rem;
+}
+
+.service-card_tags{
+  align-self: flex-end;
+  max-width: 430px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.service-tag{
+  min-width: 88px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 10px;
+  border: 2px solid #adadad;
+  background: #d6d6d6;
+  color: #fbfbfb;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.05rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.service-tag-wide{
+  order: -1;
+  min-width: 116px;
+  margin-left: auto;
+}
+
+.service-cta{
+  width: 5%;
+  min-height: clamp(250px, 32vw, 350px);
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: #d3d3d3;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 2px #cfcfcf;
+  cursor: pointer;
+}
+
+.service-cta span{
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  line-height: 1;
+}
+
+/* ------------ NAV INFERIOR ------------*/
+
+#nav_inferior{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  padding: 0 20px 0 20px;
+  display: flex;
+  align-items: center; /* Centrado vertical */
+  justify-content: center;
+  flex-direction: row;
+}
+
+.services-float{
+  width: 3.4rem;
+  height: 3.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid #aaaaaa;
+  background: #d7d7d7;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.55rem;
+}
+
+.services-pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding-bottom: 0.25rem;
+  width: 100%;
+}
+
+.services-pagination button{
+  width: clamp(42px, 4.5vw, 54px);
+  aspect-ratio: 1;
+  padding: 0;
+  border-radius: 4px;
+  border: 2px solid #d2d2d2;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+}
+
+.services-pagination .is-active{
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px){
+  #reloj{
+    display: none;
+  }
+
+  .services-stage{
+    min-height: 100%;
+    gap: 1rem;
+  }
+
+  .service-showcase{
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 0;
+  }
+
+  .service-node{
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .service-card{
+    position: relative;
+    min-height: 520px;
+    padding: 1.8rem 4.3rem 1.8rem 1.35rem;
+    overflow: hidden;
+  }
+
+  .services-float{
+    display: none;
+  }
+
+  .service-card::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 42px;
+    height: 100%;
+    background: #d3d3d3;
+    border-left: 2px solid #cfcfcf;
+    border-radius: 0 18px 18px 0;
+  }
+
+  .service-card_content{
+    max-width: 240px;
+  }
+
+  .service-card_title{
+    max-width: 220px;
+    margin-bottom: 1.2rem;
+    font-size: 2rem;
+  }
+
+  .service-card_description{
+    font-size: 0.95rem;
+  }
+
+  .service-card_description span{
+    display: block;
+    margin-left: 0;
+  }
+
+  .service-card_list{
+    display: none;
+  }
+
+  .service-card_tags{
+    align-self: flex-start;
+    max-width: 300px;
+    justify-content: flex-start;
+    margin-top: auto;
+  }
+
+  .service-tag{
+    min-width: 82px;
+    font-size: 0.9rem;
+  }
+
+  .service-tag--wide{
+    margin-left: auto;
+  }
+
+  .service-cta{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 42px;
+    height: 100%;
+    min-height: 0;
+    border-radius: 0 18px 18px 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 2;
+  }
+
+  .service-cta span{
+    font-size: 2.5rem;
+  }
+}
+
