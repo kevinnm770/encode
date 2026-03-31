@@ -1,5 +1,6 @@
 :root{
   --accent:#ff7a00;
+  --orange_sombra: #ffbe82;
   --ink:#111;
   --border:rgb(192, 192, 192);
   --muted:#6b7280;
@@ -26,7 +27,14 @@ body{
   background-color: #00000000;
   width: 100%;
   display: flex;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: var(--accent);
   flex-direction: row;
+}
+
+#hora, #dia{
+  color:#6b7280
 }
 
 .logo_main{
@@ -36,9 +44,9 @@ body{
 }
 
 #reloj{
-  font-size: 15pt;
-  color: var(--muted);
-  font-weight: bolder;
+  font-family: IBM plex mono, monospace;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 #titulo{
@@ -63,15 +71,34 @@ section{
 .box_type_slim{
   border: 3px solid var(--border);
   border-radius: 15px;
+  font-family: IBM plex mono, monospace;
+  font-weight: 600;
+  color:#6b7280;
 }
 
 .nav_item{
- height: 100%;
+  height: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  background-color: white;
+}
+
+.nav_item:hover{
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn_encode{
   border:3px solid var(--accent);
-  background-color: #11111100;
+  background-color: #16b34500;
   color: var(--ink);
   padding: 10px;
   border-radius: 15px;
@@ -105,6 +132,7 @@ section{
 }
 
 .service-showcase{
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -113,24 +141,6 @@ section{
   align-items: center;
   width: 100%;
   padding-top: 0.75rem;
-}
-
-.service-node{
-  position: absolute;
-  top: -0.2rem;
-  left: 0.15rem;
-  width: 3rem;
-  height: 3rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #d7d7d7;
-  border: 2px solid #bdbdbd;
-  color: #ffffff;
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1;
-  z-index: 2;
 }
 
 .service-card{
@@ -143,6 +153,108 @@ section{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+  transition: all ease .1s;
+}
+
+/* Sale hacia la izquierda */
+@keyframes collapseLeft {
+  from { 
+    transform: translateX(0) scaleX(1) scaleY(1);
+    opacity: 1; 
+    background: rgba(255, 255, 255, 0.85);
+  }
+  to { 
+    transform: translateX(-60%) scaleX(0) scaleY(0.9);
+    opacity: 0;
+    background: #d3d3d3; 
+  }
+}
+
+/* Entra desde la derecha */
+@keyframes expandFromRight {
+  from { 
+    transform: translateX(35%) scaleX(0.5) scaleY(0.7);
+    background: #d3d3d3;
+  }
+  to { 
+    transform: translateX(0) scaleX(1) scaleY(1);
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
+/* Sale hacia la derecha */
+@keyframes collapseRight {
+  from { 
+    transform: translateX(0) scaleX(1) scaleY(1);
+    opacity: 1; 
+    background: rgba(255, 255, 255, 0.85);
+  }
+  to { 
+    transform: translateX(60%) scaleX(0) scaleY(0.9);
+    opacity: 0;
+    background: #d3d3d3; 
+  }
+}
+
+/* Entra desde la izquierda */
+@keyframes expandFromLeft {
+  from { 
+    transform: translateX(-35%) scaleX(0.5) scaleY(0.7);
+    opacity: 0; 
+    background: var(--muted); 
+  }
+  to { 
+    transform: translateX(0) scaleX(1) scaleY(1);
+    opacity: 1; 
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.orange{
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 52% 48% 50% 50% / 48% 46% 54% 52%;
+  background:
+    radial-gradient(ellipse at 54% 5%, rgba(223, 114, 0, 0.6) 0 12%, rgba(223, 114, 0, 0) 13%),
+    linear-gradient(110deg, var(--accent) 8%, var(--orange_sombra) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.orange::before{
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 2rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 0 100% 0 100%;
+  background: linear-gradient(135deg, #b6de1f 0%, #88cb20 38%, #39af2b 100%);
+  box-shadow:
+    inset 0 -0.2rem 0 rgba(14, 129, 46, 0.18),
+    inset -0.85rem 0 0 rgba(196, 242, 68, 0.2);
+  transform: rotate(-24deg);
+  transform-origin: right bottom;
+}
+
+.orange::after{
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  width: 5px;
+  height: 15px;
+  border-radius: 15px;
+  background:
+    linear-gradient(90deg, #8e461f 0 34%, #a95a2a 34% 74%, #d7864c 74% 100%);
+  transform: rotate(18deg);
+  transform-origin: bottom center;
 }
 
 .service-card_content{
@@ -201,8 +313,7 @@ section{
   min-width: 88px;
   padding: 0.35rem 0.8rem;
   border-radius: 10px;
-  border: 2px solid #adadad;
-  background: #d6d6d6;
+  background: var(--accent);
   color: #fbfbfb;
   font-family: "Courier New", Courier, monospace;
   font-size: 1.05rem;
@@ -220,15 +331,20 @@ section{
   width: 5%;
   min-height: clamp(250px, 32vw, 350px);
   padding: 0;
-  border: 0;
+  border: none;
   border-radius: 18px;
   background: #d3d3d3;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 0 2px #cfcfcf;
   cursor: pointer;
+  transition: all ease 0.5s;
+}
+
+.service-cta:hover{
+  background-color: var(--accent);
+  border-color: var(--accent);
 }
 
 .service-cta span{
@@ -270,20 +386,30 @@ section{
   gap: 0.45rem;
   padding-bottom: 0.25rem;
   width: 100%;
+  height: 100%;
 }
 
 .services-pagination button{
   width: clamp(42px, 4.5vw, 54px);
+  max-height: 20%;
   aspect-ratio: 1;
   padding: 0;
   border-radius: 4px;
   border: 2px solid #d2d2d2;
   background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
+  transition: all ease .5s;
 }
 
 .services-pagination .is-active{
   background: var(--accent);
+  border-color: var(--accent);
+  min-height: 50px;
+  min-width: 50px;
+}
+
+.services-pagination button:hover{
+  background-color: var(--accent);
   border-color: var(--accent);
 }
 
@@ -303,7 +429,7 @@ section{
     padding-top: 0;
   }
 
-  .service-node{
+  .orange{
     top: -9999px;
     left: -9999px;
   }
@@ -387,4 +513,3 @@ section{
     font-size: 2.5rem;
   }
 }
-
