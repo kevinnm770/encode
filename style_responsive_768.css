@@ -1,0 +1,144 @@
+@media (max-width: 768px) {
+  #reloj{
+    display: none;
+  }
+
+  .services-float{
+    display: none;
+  }
+
+  .logo_main{
+    display: none;
+  }
+
+  .nav_inicio{
+    flex-direction: column;
+  }
+
+  .fila_items{
+    width: 100%;
+    height: 50%;
+    justify-content: center !important;
+  }
+
+  .nav_item{
+    padding: 0px;
+    padding-bottom: 10px;
+    height: 100%;
+  }
+
+  .fila_items .nav_item:first-child{
+    padding-right: 10px;
+  }
+
+  .fila_items .nav_item:last-child{
+    padding-left: 10px;
+  }
+
+  /* ----- SERVICIOS ----- */
+
+  #servicios{
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .services-stage{
+    height: max-content;
+  }
+
+  .service-showcase{
+    display: block;
+  }
+
+  .service-card{
+    display: block !important;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: rgba(240, 248, 255, 0);
+  }
+
+  .service-card .orange{
+    display: none;
+  }
+
+  .service-showcase .service-cta{
+    display: none;
+  }
+
+  /* -----  ----- */
+
+  #nav_superior{
+    padding: 16px !important;
+  }
+  body.pagina-ayuda #nav_superior{
+    align-items: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  body.pagina-ayuda #nav_superior .text-start{
+    font-size: 3.0rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    line-height: 1;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  body.pagina-ayuda #titulo{
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  body.pagina-ayuda #reloj{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 14px;
+    line-height: 1.1;
+    text-align: right;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  body.pagina-ayuda #hora{
+    font-size: 18px;
+  }
+  body.pagina-ayuda #dia{
+    font-size: 14px;
+  }
+  body.pagina-ayuda section{
+    min-height: auto;
+  }
+
+  body.pagina-ayuda #ayuda{
+    width: 100%;
+    padding-top: 165px;
+    padding-bottom: 24px;
+  }
+  body.pagina-ayuda .contenedor-mayor{
+    gap: 20px;
+    padding: 12px;
+  }
+  body.pagina-ayuda .contenedor-preguntas{
+    padding: 20px;
+  }
+  body.pagina-ayuda .titulo-preguntas{
+    font-size: 1.8rem;
+  }
+  body.pagina-ayuda #nav_inferior {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    height: auto;
+    padding: 28px 24px;
+  }
+  body.pagina-ayuda .arrow,
+  body.pagina-ayuda .letter-e {
+    font-size: 5rem;
+  }
+  body.pagina-ayuda .location,
+  body.pagina-ayuda .copyright {
+    font-size: 1.1rem;
+  }
+}
