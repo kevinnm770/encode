@@ -22,11 +22,20 @@ body{
   color:var(--ink);
   background:
     linear-gradient(rgba(229, 231, 235, 0.75) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(229, 231, 235, 0.75) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 231, 235, 0.9) 1px, transparent 1px),
     linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
   background-size: 86px 86px, 86px 86px, auto;
   overflow:hidden;
   position: relative;
+}
+
+body::before{
+  content: '';
+  background: radial-gradient(ellipse 80% 80% at center, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgb(207, 207, 207));
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
 }
 
 #nav_superior{
@@ -61,6 +70,7 @@ body{
   font-family: IBM plex mono, monospace;
   font-weight: 500;
   font-size: 20px;
+  color: var(--ink);
 }
 
 #titulo{
@@ -454,10 +464,9 @@ section{
 
 .services-pagination a{
   width: clamp(42px, 4.5vw, 54px);
-  max-height: 20%;
   aspect-ratio: 1;
   padding: 0;
-  border-radius: 4px;
+  border-radius: 10px;
   border: 2px solid #d2d2d2;
   background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
@@ -467,8 +476,6 @@ section{
 .services-pagination .is-active{
   background: var(--accent);
   border-color: var(--accent);
-  min-height: 50px;
-  min-width: 50px;
 }
 
 .services-pagination a:hover{
