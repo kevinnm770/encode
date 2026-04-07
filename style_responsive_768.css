@@ -35,6 +35,19 @@
     padding-left: 10px;
   }
 
+  main {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory; /* opcional: snap vertical */
+  }
+
+  section {
+    min-width: 100%;
+    min-height: 100vh;
+    scroll-snap-align: start;
+  }
+
   /* ----- SERVICIOS ----- */
 
   #servicios{

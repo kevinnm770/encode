@@ -20,70 +20,285 @@
 </head>
 
 <body>
-  <nav class="row p-4" id="nav_superior">
-    <div class="col-6 text-start" style="font-size: 2em;">encode</div>
-    <div class="col-6 text-end" id="reloj">
-      <div id="hora">12:00 <span class="ampm">am</span></div>
-      <div id="dia">24 de febrero</div>
+  <nav class="" id="nav_superior">
+    <div><h1 class="logo_main">encode <span id="titulo"></span></h1></div>
+    <div class="container_collapse">
+      <button id="btn_collapse">VER</button>
     </div>
   </nav>
 
-  <section id="inicio" style="margin-top: 100px;">
-    <div class="row nav_inicio m-0 px-3" style="min-height: 30%;">
-      
-      <div class="col-md-6 col-12 text-center mb-md-0 mb-3 px-md-0 px-4">
-        <div class="row" style="min-height: 100%;">
-          <div class="col-4 px-md-4 px-1">
-            <div class="box_type_slim nav_item"></div>
+  <nav class="nav_lateral" id="navLateral" style="display: none;">
+    <h4>Menu</h4>
+    <ul>
+      <li><a href="">Cotizar</a></li>
+      <li><a href="">Seguimiento</a></li>
+      <li><a href="">Consultar</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="inicio">
+      <div class="nav_inicio">
+        <div class="fila_items">
+          <div class="nav_item" style="padding-left: 0;">
+            <div class="box_type_slim">
+              <span>Diseño web</span>
+            </div>
           </div>
-          <div class="col-4 px-md-4 px-1">
-            <div class="box_type_slim nav_item"></div>
+          <div class="nav_item">
+            <div class="box_type_slim">
+              <span>Información</span>
+            </div>
           </div>
-          <div class="col-4 px-md-4 px-1">
-            <div class="box_type_slim nav_item"></div>
+          <div class="nav_item">
+            <div class="box_type_slim">
+              <span>Servicios</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fila_items">
+          <div class="nav_item">
+            <div class="box_type_slim">
+              <span>Proyectos</span>
+            </div>
+          </div>
+          <div class="nav_item">
+            <div class="box_type_slim">
+              <span>Contacto</span>
+            </div>
+          </div>
+          <div class="nav_item" style="padding-right: 0;">
+            <div class="box_type_slim">
+              <span>FAQ</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col-md-6 col-12 text-end mb-md-0 mb-3 px-md-0 px-4">
-        <div class="row" style="min-height: 100%;">
-          <div class="col-4 px-md-4 px-1">
-            <div class="box_type_slim nav_item"></div>
-          </div>
-          <div class="col-4 px-md-4 px-1">
-            <div class="box_type_slim nav_item"></div>
-          </div>
-          <div class="col-4 px-md-4 px-1">
-            <div class="box_type_slim nav_item"></div>
-          </div>
+      <div class="box_main_container">
+        <div class="intro">
+          <h5>INTRO</h5>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, distinctio itaque.</p>
         </div>
-        
+        <div class="box_main">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta perspiciatis.</p>
+        </div>
       </div>
-      
-    </div>
+    </section>
 
-    <div class="row m-4" style="height: 30%;">
-      <div class="col-12 box_type_slim"></div>
-    </div>
+    <section id="servicios">
+      <div class="services-stage">
+        <article class="service-showcase">
+          <button id="btn-backService" class="service-cta" onclick="backService()" type="button" aria-label="Siguiente servicio">
+            <span aria-hidden="true">&larr;</span>
+          </button>
 
-    <div class="text-center" style="max-height: 10%;">
-      <button class="btn_encode" style="width: 40%;">Cotizar</button>
-    </div>
-  </section>
+          <!-- SERVICIO 1 -->
+          <div class="service-card">
+            <span class="orange" aria-hidden="true"></span>
+            <div class="service-card_content">
+              <h1 class="service-card_title">Plataformas web avanzadas</h1>
 
-  <nav id="nav_inferior">
-    <a class="services-float" href="" aria-hidden="true">?</a>
+              <p class="service-card_description">
+                Breve descripcion del servicio.
+                <span>De que trata y que abarca.</span>
+                <span class="service-card_description-note">Las etiquetas muestran algo relevante</span>
+              </p>
 
+              <ul class="service-card_list">
+                <li>Aplicaciones y sitios web</li>
+                <li>Web Personalizada</li>
+                <li>Web Personalizada</li>
+              </ul>
+            </div>
+
+            <div class="service-card_tags" aria-label="Etiquetas del servicio">
+              <span class="service-tag">Brief</span>
+              <span class="service-tag">html</span>
+              <span class="service-tag">css</span>
+              <span class="service-tag">vscode</span>
+              <span class="service-tag">java</span>
+              <span class="service-tag">UI</span>
+              <span class="service-tag">diseno</span>
+            </div>
+          </div>
+
+          <!-- SERVICIO 2 -->
+          <div class="service-card" style="display:none;">
+            <span class="orange" aria-hidden="true"></span>
+            <div class="service-card_content">
+              <h1 class="service-card_title">Servicio 2</h1>
+
+              <p class="service-card_description">
+                Breve descripcion del servicio.
+                <span>De que trata y que abarca.</span>
+                <span class="service-card_description-note">Las etiquetas muestran algo relevante</span>
+              </p>
+
+              <ul class="service-card_list">
+                <li>Aplicaciones y sitios web</li>
+                <li>Web Personalizada</li>
+                <li>Web Personalizada</li>
+              </ul>
+            </div>
+
+            <div class="service-card_tags" aria-label="Etiquetas del servicio">
+              <span class="service-tag service-tag-wide">Brief</span>
+              <span class="service-tag">html</span>
+              <span class="service-tag">css</span>
+              <span class="service-tag">vscode</span>
+              <span class="service-tag">java</span>
+              <span class="service-tag">UI</span>
+              <span class="service-tag">diseno</span>
+            </div>
+          </div>
+
+          <!-- SERVICIO 3 -->
+          <div class="service-card" style="display:none;">
+            <span class="orange" aria-hidden="true"></span>
+            <div class="service-card_content">
+              <h1 class="service-card_title">Servicio 3</h1>
+
+              <p class="service-card_description">
+                Breve descripcion del servicio.
+                <span>De que trata y que abarca.</span>
+                <span class="service-card_description-note">Las etiquetas muestran algo relevante</span>
+              </p>
+
+              <ul class="service-card_list">
+                <li>Aplicaciones y sitios web</li>
+                <li>Web Personalizada</li>
+                <li>Web Personalizada</li>
+              </ul>
+            </div>
+
+            <div class="service-card_tags" aria-label="Etiquetas del servicio">
+              <span class="service-tag service-tag-wide">Brief</span>
+              <span class="service-tag">html</span>
+              <span class="service-tag">css</span>
+              <span class="service-tag">vscode</span>
+              <span class="service-tag">java</span>
+              <span class="service-tag">UI</span>
+              <span class="service-tag">diseno</span>
+            </div>
+          </div>
+
+          <!-- SERVICIO 4 -->
+          <div class="service-card" style="display:none;">
+            <span class="orange" aria-hidden="true"></span>
+            <div class="service-card_content">
+              <h1 class="service-card_title">Servicio 4</h1>
+
+              <p class="service-card_description">
+                Breve descripcion del servicio.
+                <span>De que trata y que abarca.</span>
+                <span class="service-card_description-note">Las etiquetas muestran algo relevante</span>
+              </p>
+
+              <ul class="service-card_list">
+                <li>Aplicaciones y sitios web</li>
+                <li>Web Personalizada</li>
+                <li>Web Personalizada</li>
+              </ul>
+            </div>
+
+            <div class="service-card_tags" aria-label="Etiquetas del servicio">
+              <span class="service-tag service-tag-wide">Brief</span>
+              <span class="service-tag">html</span>
+              <span class="service-tag">css</span>
+              <span class="service-tag">vscode</span>
+              <span class="service-tag">java</span>
+              <span class="service-tag">UI</span>
+              <span class="service-tag">diseno</span>
+            </div>
+          </div>
+
+          <!-- SERVICIO 5 -->
+          <div class="service-card" style="display:none;">
+            <span class="orange" aria-hidden="true"></span>
+            <div class="service-card_content">
+              <h1 class="service-card_title">Servicio 5</h1>
+
+              <p class="service-card_description">
+                Breve descripcion del servicio.
+                <span>De que trata y que abarca.</span>
+                <span class="service-card_description-note">Las etiquetas muestran algo relevante</span>
+              </p>
+
+              <ul class="service-card_list">
+                <li>Aplicaciones y sitios web</li>
+                <li>Web Personalizada</li>
+                <li>Web Personalizada</li>
+              </ul>
+            </div>
+
+            <div class="service-card_tags" aria-label="Etiquetas del servicio">
+              <span class="service-tag service-tag-wide">Brief</span>
+              <span class="service-tag">html</span>
+              <span class="service-tag">css</span>
+              <span class="service-tag">vscode</span>
+              <span class="service-tag">java</span>
+              <span class="service-tag">UI</span>
+              <span class="service-tag">diseno</span>
+            </div>
+          </div>
+
+          <button id="btn-nextService" onclick="nextService()" class="service-cta" type="button" aria-label="Siguiente servicio">
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section id="acercade">
+      <div class="contenedor-informacion">
+        <!-- Columna Izquierda (Blanca) -->
+        <div class="columna-izquierda">
+            <p class="texto-descripcion">
+                Encode es un estudio que integra <strong>diseño, programación y estrategia</strong> 
+                desde el inicio para construir plataformas coherentes y escalables.
+            </p>
+
+            <div class="descripcion-abajo">
+                <p class="texto-proceso">
+                    IDEA → DISEÑO → CÓDIGO → SISTEMA → EVOLUCIÓN
+                </p>
+            </div>
+        </div>
+
+        <!-- Columna Derecha (Gris) -->
+        <div class="columna-derecha">
+            <div class="pregunta">¿Que es encode?</div>
+            <div class="pregunta">¿Como trabajamos?</div>
+            <div class="pregunta">¿Porque encode?</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ayuda"> 
+      <div class="contenedor-preguntas" > 
+        <h2 class="titulo-preguntas">Preguntas frecuentes</h2>
+        <ul class="lista-preguntas" style="list-style-type: none;">
+          <li class="pregunta">¿Cómo puedo contactar con el soporte técnico?</li>
+          <li class="pregunta">¿Cuáles son los horarios de atención al cliente?</li>
+          <li class="pregunta">¿Cómo puedo solicitar un reembolso?</li>
+          <li class="pregunta">¿Qué métodos de pago aceptan?</li>
+          <li class="pregunta">¿Cómo puedo ver el estado de mi pedido?</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <nav id="nav_inferior" style="display: none;">
     <div class="services-pagination" aria-label="Paginacion de servicios">
-      <a type="button" href="" aria-label="Servicio 1"></a>
-      <a type="button" href="" aria-label="Servicio 2"></a>
-      <a type="button" href="" class="is-active" aria-label="Servicio 3"></a>
-      <a type="button" href="" aria-label="Servicio 4"></a>
-      <a type="button" href="" aria-label="Servicio 5"></a>
-      <a type="button" href="" aria-label="Servicio 6"></a>
+      <div class="services-pagination">
+        <a aria-label="inicio"></a>
+        <a aria-label="servicios"></a>
+        <a aria-label="acercade"></a>
+        <a aria-label="ayuda"></a>
+      </div>
     </div>
-
-    <a class="services-float" href="" aria-hidden="true">M</a>
   </nav>
 </body>
 
