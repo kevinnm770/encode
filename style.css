@@ -38,7 +38,7 @@ body::before{
   z-index: -1;
 }
 
-/* ----------- SCROLL HORIZONTAL ------------ */
+/* ----------- DISPLAY DE TITULOS ------------ */
 #titulo {
   display: inline-block;
   overflow: hidden;
@@ -199,9 +199,10 @@ body::before{
 /* ----------- SCROLL HORIZONTAL ------------ */
 main {
   display: flex;
+  flex-direction: row;
   width: 100vw;
-  height: 100vh;
-  overflow-x: scroll;
+  height: max-content;
+  overflow-x: hidden;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
 }
@@ -241,6 +242,7 @@ section {
 #inicio{
   padding-bottom: 2.5%; /* PARTE DE ALTURA DEL INICIO*/
   padding-top: 2.5%; /* PARTE DE ALTURA DEL INICIO*/
+  width: 100vw;
 }
 
 .nav_inicio{
@@ -617,7 +619,7 @@ section {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 2px solid #aaaaaa;
+  border: 2px solid var(--border);
   background: #d7d7d7;
   color: #ffffff;
   font-family: "Courier New", Courier, monospace;
@@ -636,9 +638,9 @@ section {
 
 .services-pagination a{
   width: clamp(42px, 4.5vw, 54px);
+  border-radius: 10px;
   aspect-ratio: 1;
   padding: 0;
-  border-radius: 10px;
   border: 2px solid #d2d2d2;
   background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
@@ -646,8 +648,10 @@ section {
 }
 
 .services-pagination .is-active{
-  background: var(--accent);
+  border-radius: 100px;
+  background-color: var(--accent);
   border-color: var(--accent);
+  border: none;
 }
 
 .services-pagination a:hover{
@@ -665,20 +669,40 @@ section {
   padding: 40px;
 }
 .contenedor-preguntas {
-  font-weight: 500; 
-  border: 2px solid #e0e0e0;
+  border: 4px solid var(--border);
   border-radius: 12px;
   width: 100%;
   height: 100%;
   padding: 40px;
   background-color: #fafafa;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+}
+
+.contenedor-preguntas h2{
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.contenedor-preguntas ul{
+  list-style-type: none;
+  font-size: 1.5rem;
 }
 
 #ayuda .pregunta{
   transition: all 0.3s ease;
+  margin-bottom: 10px;
   cursor: pointer;
+}
+
+#ayuda .pregunta a{
+  color: var(--muted);
+  text-decoration: none;
+  transition: all ease .5s;
+}
+
+#ayuda .pregunta a:hover{
+  color: var(--accent);
 }
 
 .footer-logo {
@@ -717,6 +741,7 @@ section {
 #acercade{
   display: flex;
   padding: 40px;
+  width: 100%;
 }
 
 .contenedor-informacion {
@@ -728,7 +753,6 @@ section {
   background-color: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .columna-izquierda {
@@ -739,6 +763,9 @@ section {
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
+    border: 4px solid var(--border);
+    border-right: none;
+    border-radius: 20px 0 0 20px;
 }
 
 .texto-descripcion {
@@ -774,15 +801,17 @@ section {
   height: 100%;
   padding: 50px 40px;
   background-color: var(--border);
+  border-radius: 20px 0 0 20px;
   flex-direction: column;
   gap: 30px;
+  transform: scaleX(1.07);
 }
 
 #acercade .pregunta {
   display: flex;
   width: 100%;
   justify-content: right;
-  font-size: 1.3em;
+  font-size: 2em;
   color: white;
   font-weight: 500;
   padding-bottom: 15px;
@@ -791,8 +820,162 @@ section {
   transition: all 0.3s ease;
 }
 
-.pregunta:hover {
-    color: #ff9900;
+#acercade .pregunta:hover {
+    color: var(--accent);
     border-bottom-color: #ff9900;
     transform: translateX(10px);
+}
+
+/* ------------ PROYECTOS ------------ */
+#proyectos{
+  padding: 40px;
+  width: 100vw;
+}
+
+#proyectos ul{
+  list-style-type: none;
+  padding: 0;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+#proyectos .project{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 3px solid var(--border);
+  padding: 10px;
+}
+
+#proyectos .project img{
+  height: 100px;
+  width: 100px;
+  background-color: var(--border);
+  border-radius: 10px;
+}
+
+#proyectos .project h3{
+  width: calc(30% - 100px);
+}
+
+#proyectos .project h3 a{
+  text-decoration: none;
+  color: var(--ink);
+  transition: all ease .5s;
+}
+
+#proyectos .project h3 a:hover{
+  color: var(--accent);
+}
+
+#proyectos .project .etiquetas{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 10px;
+  width: calc(70% - 100px);
+}
+
+#proyectos .project .etiquetas span{
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--border);
+  color: var(--card);
+}
+
+/* ------------ PAGINA CONTACTO ------------ */
+#contacto{
+  padding: 40px;
+  width: 100vw;
+}
+
+#contacto h3{
+  font-size: 3rem;
+  color: var(--muted);
+  height: 20%;
+  margin: 0;
+}
+
+.container_social {
+  height: 80%;
+  width: 100%;
+  overflow: hidden; /* ← recorta lo que sale */
+  display: flex;
+  align-items: center;
+}
+
+.red_social{
+  height: 300px;
+  width: 300px;
+  font-size: 2rem;
+  background-color: var(--border);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--card);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease-in .5s;
+}
+
+.red_social:hover{
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.social_track {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  animation: scroll-social 20s linear infinite;
+  width: max-content; /* ← se expande según el contenido */
+}
+
+@keyframes scroll-social {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* -50% porque el contenido está duplicado */
+}
+
+.container_social:hover .social_track {
+  animation-play-state: paused;
+}
+
+/* ------------ FOOTER ------------ */
+#section_footer{
+  padding: 0;
+  height: 90vh;
+  width: 100vw;
+  align-content: end;
+}
+
+footer {
+  height: 90%;
+  padding: 0;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background-color: var(--accent);
+  transform: translateY(100%);
+  align-content: end;
+  transition: all ease 1s;
+}
+
+footer .content_footer{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 40px;
+}
+
+footer .content_footer img{
+  width: 40%;
+}
+
+footer .content_footer .textos{
+  width: 60%;
+  text-align: right;
+  padding: 40px;
+  color: var(--card);
+  font-size: 1.5rem;
 }

@@ -1,4 +1,52 @@
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+  /* ----------- SCROLL HORIZONTAL ------------ */
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  main {
+    flex-direction: column;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible; /* el body maneja el scroll */
+    scroll-snap-type: none;
+  }
+
+  section {
+    min-width: 100%;
+    height: auto;
+    min-height: 100vh;
+    scroll-snap-align: start;
+  }
+
+  /* ------------ INICIO ------------*/
+  .nav_inicio{
+    height: 300px;
+  }
+  .box_main_container{
+    flex-direction: column;
+    min-height: 300px;
+    padding: 0;
+  }
+  .intro{
+    width: 100%;
+  }
+  .intro h5{
+    font-size: 3rem;
+  }
+  .box_main{
+    width: 100%;
+    height: 500px;
+  }
+
+
+  /* ------------ NAV INFERIOR ------------*/
+  #nav_inferior{
+    display: none;
+  }
+
+  /* ------------ ------------*/
   #reloj{
     display: none;
   }

@@ -1,6 +1,8 @@
+const esDesktop = () => window.innerWidth >= 1000;
 const servicios=document.querySelectorAll(".service-card");
 const main = document.querySelector('main');
 const secciones = document.querySelectorAll('main section');
+const footer = document.querySelector('footer');
 const titulo_principal = document.querySelector("#titulo");
 const nav_inferior = document.querySelector("#nav_inferior");
 let seccionActual;
@@ -56,38 +58,68 @@ function toggleNavInferior(visible) {
 }
 
 const observer = new IntersectionObserver((entries) => {
-  // Si hay múltiples, quedarse con la que tiene mayor intersección
-  const entry = entries
-    .filter(e => e.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if(esDesktop()){
+    const entry = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-  if (!entry) return;
+    if (!entry) return;
 
-  seccionActual = entry.target;
+    seccionActual = entry.target;
 
-  switch (seccionActual.id) {
-    case 'inicio':
-        cambiarTitulo('');
-        toggleNavInferior(false);
-        activarDot('inicio');
-        break;
-    case 'servicios':
-        cambiarTitulo('Servicios');
-        toggleNavInferior(true);
-        activarDot('servicios');
-        break;
-    case 'acercade':
-        cambiarTitulo('Acerca de');
-        toggleNavInferior(true);
-        activarDot('acercade');
-        break;
-    case 'ayuda':
-        cambiarTitulo('Ayuda');
-        toggleNavInferior(true);
-        activarDot('ayuda');
-        break;
-    default:
-        cambiarTitulo('');
+    switch (seccionActual.id) {
+      case 'inicio':
+          cambiarTitulo('');
+          toggleNavInferior(false);
+          activarDot('inicio');
+
+          footer.style.transform = "translateY(100%)";
+          break;
+      case 'servicios':
+          cambiarTitulo('Servicios');
+          toggleNavInferior(true);
+          activarDot('servicios');
+
+          footer.style.transform = "translateY(100%)";
+          break;
+      case 'contacto':
+          cambiarTitulo('Contacto');
+          toggleNavInferior(true);
+          activarDot('contacto');
+
+          footer.style.transform = "translateY(100%)";
+          break;
+      case 'acercade':
+          cambiarTitulo('Acerca de');
+          toggleNavInferior(true);
+          activarDot('acercade');
+
+          footer.style.transform = "translateY(100%)";
+          break;
+      case 'proyectos':
+          cambiarTitulo('Proyectos');
+          toggleNavInferior(true);
+          activarDot('proyectos');
+
+          footer.style.transform = "translateY(100%)";
+          break;
+      case 'ayuda':
+          cambiarTitulo('Ayuda');
+          toggleNavInferior(true);
+          activarDot('ayuda');
+
+          footer.style.transform = "translateY(100%)";
+          break;
+      case 'section_footer':
+          cambiarTitulo('');
+          toggleNavInferior(false);
+          activarDot('section_footer');
+
+          footer.style.transform = "translateY(0%)";
+          break;
+      default:
+          cambiarTitulo('');
+    }
   }
 
 }, { threshold: 0.5 });
@@ -95,7 +127,7 @@ const observer = new IntersectionObserver((entries) => {
 secciones.forEach(s => observer.observe(s));
 
 window.addEventListener('wheel', (e) => {
-  if (window.innerWidth < 768) return; // ← sale sin hacer nada
+  if (!esDesktop()) return; // ← sale sin hacer nada
 
   e.preventDefault();
   main.scrollBy({
@@ -106,6 +138,8 @@ window.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 document.querySelectorAll('.services-pagination a').forEach(dot => {
+  if (!esDesktop()) return; // ← sale sin hacer nada
+
   dot.addEventListener('click', (e) => {
     e.preventDefault(); // ← detiene el scroll nativo
     
@@ -142,21 +176,22 @@ function animateCards(saliente, entrante, direction) {
 }
 
 function nextService(){
-    let pos=0, pos_serv_active;
+  if (!esDesktop()) return; // ← sale sin hacer nada
+  let pos=0, pos_serv_active;
 
-    // Solo encontrar cuál está visible
-    servicios.forEach(servicio => {
-        if (servicio.style.display === '') {
-            pos_serv_active = pos;
-        }
-        pos++;
-    });
+  // Solo encontrar cuál está visible
+  servicios.forEach(servicio => {
+      if (servicio.style.display === '') {
+          pos_serv_active = pos;
+      }
+      pos++;
+  });
 
-    const saliente = servicios[pos_serv_active];
-    const entrante = servicios[pos_serv_active + 1] ?? servicios[0];
+  const saliente = servicios[pos_serv_active];
+  const entrante = servicios[pos_serv_active + 1] ?? servicios[0];
 
-    // Dejar que animateCards maneje todo
-    animateCards(saliente, entrante, 'left');
+  // Dejar que animateCards maneje todo
+  animateCards(saliente, entrante, 'left');
 }
 
 let intervalo = setInterval(nextService, 10000);
@@ -171,50 +206,52 @@ showcase.addEventListener('mouseleave', () => {
 });
 
 function backService() {
-    let pos = 0, pos_serv_active;
+  if (!esDesktop()) return; // ← sale sin hacer nada
+  let pos = 0, pos_serv_active;
 
-    // Solo encontrar cuál está visible
-    servicios.forEach(servicio => {
-        if (servicio.style.display === '') {
-            pos_serv_active = pos;
-        }
-        pos++;
-    });
+  // Solo encontrar cuál está visible
+  servicios.forEach(servicio => {
+      if (servicio.style.display === '') {
+          pos_serv_active = pos;
+      }
+      pos++;
+  });
 
-    const saliente = servicios[pos_serv_active];
-    const entrante = servicios[pos_serv_active - 1] ?? servicios[pos - 1];
+  const saliente = servicios[pos_serv_active];
+  const entrante = servicios[pos_serv_active - 1] ?? servicios[pos - 1];
 
-    // Dejar que animateCards maneje todo
-    animateCards(saliente, entrante, 'rigth');
+  // Dejar que animateCards maneje todo
+  animateCards(saliente, entrante, 'rigth');
 }
 
 document.addEventListener('click', (e) => {
-    const navLateral = document.querySelector('#navLateral');
+  const navLateral = document.querySelector('#navLateral');
 
-    if (!navLateral.contains(e.target) && navLateral.style.display !== "none") {
-        navLateral.style.animation = "disappear ease-in .5s";
-        const content = navLateral.innerHTML;
-        navLateral.innerHTML="";
+  if (!navLateral.contains(e.target) && navLateral.style.display !== "none") {
+      navLateral.style.animation = "disappear ease-in .5s";
+      const content = navLateral.innerHTML;
+      navLateral.innerHTML="";
 
-        navLateral.addEventListener('animationend', () => {
-            navLateral.style.animation = "";
-            navLateral.style.display = "none";
-            navLateral.innerHTML=content;
-        }, { once: true });
-    }
+      navLateral.addEventListener('animationend', () => {
+          navLateral.style.animation = "";
+          navLateral.style.display = "none";
+          navLateral.innerHTML=content;
+      }, { once: true });
+  }
 });
 
 document.querySelector("#btn_collapse").addEventListener('click', (e) => {
-    e.stopPropagation();
-    const navLateral = document.querySelector('#navLateral');
-    const content = navLateral.innerHTML;
-    navLateral.innerHTML="";
+  e.stopPropagation();
+  const navLateral = document.querySelector('#navLateral');
+  const content = navLateral.innerHTML;
+  navLateral.innerHTML="";
 
-    navLateral.style.display = "";
-    navLateral.style.animation = "appear ease-out .5s";
+  navLateral.style.display = "";
+  navLateral.style.animation = "appear ease-out .5s";
 
-    navLateral.addEventListener('animationend', () => {
-        navLateral.style.animation = "";
-        navLateral.innerHTML=content;
-    }, { once: true });
+  navLateral.addEventListener('animationend', () => {
+      navLateral.style.animation = "";
+      navLateral.innerHTML=content;
+  }, { once: true });
 });
+
