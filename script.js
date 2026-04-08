@@ -5,8 +5,54 @@ const secciones = document.querySelectorAll('main section');
 const footer = document.querySelector('footer');
 const titulo_principal = document.querySelector("#titulo");
 const nav_inferior = document.querySelector("#nav_inferior");
+const navInicioBoxes = Array.from(document.querySelectorAll('#inicio .box_type_slim'));
 let seccionActual;
 const dots = document.querySelectorAll('.services-pagination a');
+const navInicioMap = {
+  inicio: 'inicio',
+  acercade: 'acercade',
+  servicios: 'servicios',
+  proyectos: 'proyectos',
+  contacto: 'contacto',
+  faq: 'ayuda'
+};
+
+function normalizarTexto(texto) {
+  return texto
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '')
+    .trim()
+    .toLowerCase();
+}
+
+function activarNavInicio(seccionId) {
+  navInicioBoxes.forEach((box) => {
+    const targetId = navInicioMap[normalizarTexto(box.innerText)];
+    box.classList.toggle('active', targetId === seccionId);
+  });
+}
+
+function irASeccion(seccionId) {
+  const seccion = document.getElementById(seccionId);
+
+  if (!seccion) {
+    return;
+  }
+
+  if (esDesktop()) {
+    main.scrollTo({
+      left: seccion.offsetLeft,
+      behavior: 'smooth'
+    });
+    return;
+  }
+
+  seccion.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
 
 function activarDot(seccionId) {
   dots.forEach(dot => {
@@ -72,6 +118,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('');
           toggleNavInferior(false);
           activarDot('inicio');
+          activarNavInicio('inicio');
 
           footer.style.transform = "translateY(100%)";
           break;
@@ -79,6 +126,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('Servicios');
           toggleNavInferior(true);
           activarDot('servicios');
+          activarNavInicio('servicios');
 
           footer.style.transform = "translateY(100%)";
           break;
@@ -86,6 +134,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('Contacto');
           toggleNavInferior(true);
           activarDot('contacto');
+          activarNavInicio('contacto');
 
           footer.style.transform = "translateY(100%)";
           break;
@@ -93,6 +142,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('Acerca de');
           toggleNavInferior(true);
           activarDot('acercade');
+          activarNavInicio('acercade');
 
           footer.style.transform = "translateY(100%)";
           break;
@@ -100,6 +150,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('Proyectos');
           toggleNavInferior(true);
           activarDot('proyectos');
+          activarNavInicio('proyectos');
 
           footer.style.transform = "translateY(100%)";
           break;
@@ -107,6 +158,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('Ayuda');
           toggleNavInferior(true);
           activarDot('ayuda');
+          activarNavInicio('ayuda');
 
           footer.style.transform = "translateY(100%)";
           break;
@@ -114,6 +166,7 @@ const observer = new IntersectionObserver((entries) => {
           cambiarTitulo('');
           toggleNavInferior(false);
           activarDot('section_footer');
+          activarNavInicio('');
 
           footer.style.transform = "translateY(0%)";
           break;
@@ -144,13 +197,30 @@ document.querySelectorAll('.services-pagination a').forEach(dot => {
     e.preventDefault(); // ← detiene el scroll nativo
     
     const seccionId = dot.getAttribute('aria-label');
-    const seccion = document.getElementById(seccionId);
-    
-    if (seccion) {
-      main.scrollTo({
-        left: seccion.offsetLeft,
-        behavior: 'smooth'
-      });
+    irASeccion(seccionId);
+  });
+});
+
+navInicioBoxes.forEach((box) => {
+  const seccionId = navInicioMap[normalizarTexto(box.innerText)];
+
+  if (!seccionId) {
+    return;
+  }
+
+  box.setAttribute('role', 'button');
+  box.setAttribute('tabindex', '0');
+
+  box.addEventListener('click', () => {
+    activarNavInicio(seccionId);
+    irASeccion(seccionId);
+  });
+
+  box.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      activarNavInicio(seccionId);
+      irASeccion(seccionId);
     }
   });
 });
@@ -224,6 +294,81 @@ function backService() {
   animateCards(saliente, entrante, 'rigth');
 }
 
+const acercaOpciones = [
+  {
+    descripcion:
+      'Encode es un estudio que integra <strong>diseño, programación y estrategia</strong> desde el inicio para construir plataformas coherentes y escalables.',
+    proceso: 'IDEA → DISEÑO → CÓDIGO → SISTEMA → EVOLUCIÓN'
+  },
+  {
+    descripcion:
+      'Trabajamos cada proyecto como un sistema: primero entendemos el objetivo, luego diseñamos una experiencia clara y finalmente desarrollamos una solución lista para crecer.',
+    proceso: 'DESCUBRIR → PROPONER → DISEÑAR → DESARROLLAR → LANZAR'
+  },
+  {
+    descripcion:
+      'Porque unimos diseño y código en un mismo proceso, evitando piezas sueltas y creando plataformas con dirección visual, rendimiento y mantenimiento desde el primer día.',
+    proceso: 'CLARIDAD → COHERENCIA → ESCALABILIDAD → ACOMPAÑAMIENTO'
+  }
+];
+
+const columnaAcerca = document.querySelector('#acercade .columna-izquierda');
+const descripcionAcerca = document.querySelector('#acercade .texto-descripcion');
+const procesoAcerca = document.querySelector('#acercade .texto-proceso');
+const preguntasAcerca = document.querySelectorAll('#acercade .columna-derecha .pregunta');
+let acercaActiva = 0;
+let acercaAnimando = false;
+
+function actualizarAcerca(index) {
+  if (
+    acercaAnimando ||
+    index === acercaActiva ||
+    !acercaOpciones[index] ||
+    !columnaAcerca ||
+    !descripcionAcerca ||
+    !procesoAcerca
+  ) {
+    return;
+  }
+
+  acercaAnimando = true;
+  columnaAcerca.classList.remove('acerca-entrando', 'acerca-saliendo');
+  void columnaAcerca.offsetWidth;
+  columnaAcerca.classList.add('acerca-saliendo');
+
+  columnaAcerca.addEventListener('animationend', () => {
+    descripcionAcerca.innerHTML = acercaOpciones[index].descripcion;
+    procesoAcerca.textContent = acercaOpciones[index].proceso;
+
+    preguntasAcerca.forEach((pregunta, preguntaIndex) => {
+      pregunta.classList.toggle('is-active', preguntaIndex === index);
+    });
+
+    acercaActiva = index;
+    columnaAcerca.classList.remove('acerca-saliendo');
+    columnaAcerca.classList.add('acerca-entrando');
+
+    columnaAcerca.addEventListener('animationend', () => {
+      columnaAcerca.classList.remove('acerca-entrando');
+      acercaAnimando = false;
+    }, { once: true });
+  }, { once: true });
+}
+
+preguntasAcerca.forEach((pregunta, index) => {
+  pregunta.setAttribute('role', 'button');
+  pregunta.setAttribute('tabindex', '0');
+  pregunta.classList.toggle('is-active', index === acercaActiva);
+
+  pregunta.addEventListener('click', () => actualizarAcerca(index));
+  pregunta.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      actualizarAcerca(index);
+    }
+  });
+});
+
 document.addEventListener('click', (e) => {
   const navLateral = document.querySelector('#navLateral');
 
@@ -254,4 +399,3 @@ document.querySelector("#btn_collapse").addEventListener('click', (e) => {
       navLateral.innerHTML=content;
   }, { once: true });
 });
-

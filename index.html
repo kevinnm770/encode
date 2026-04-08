@@ -31,7 +31,7 @@
     <h4>Menu</h4>
     <ul>
       <li><a href="">Cotizar</a></li>
-      <li><a href="">Seguimiento</a></li>
+      <li><a href="consultar.html">Seguimiento</a></li>
       <li><a href="">Consultar</a></li>
     </ul>
   </nav>
@@ -41,18 +41,18 @@
       <div class="nav_inicio">
         <div class="fila_items">
           <div class="nav_item" style="padding-left: 0;">
-            <div class="box_type_slim">
+            <div class="box_type_slim active">
               <span>Inicio</span>
             </div>
           </div>
           <div class="nav_item">
             <div class="box_type_slim">
-              <span>Información</span>
+              <span>Servicios</span>
             </div>
           </div>
           <div class="nav_item">
             <div class="box_type_slim">
-              <span>Servicios</span>
+              <span>Acerca de</span>
             </div>
           </div>
         </div>
@@ -63,14 +63,14 @@
               <span>Proyectos</span>
             </div>
           </div>
-          <div class="nav_item">
-            <div class="box_type_slim">
-              <span>Contacto</span>
-            </div>
-          </div>
           <div class="nav_item" style="padding-right: 0;">
             <div class="box_type_slim">
               <span>FAQ</span>
+            </div>
+          </div>
+          <div class="nav_item">
+            <div class="box_type_slim">
+              <span>Contacto</span>
             </div>
           </div>
         </div>
@@ -88,6 +88,7 @@
     </section>
 
     <section id="servicios">
+      <h2>Servicios</h2>
       <div class="services-stage">
         <article class="service-showcase">
           <button id="btn-backService" class="service-cta" onclick="backService()" type="button" aria-label="Siguiente servicio">
@@ -96,7 +97,7 @@
 
           <!-- SERVICIO 1 -->
           <div class="service-card">
-            <span class="orange" aria-hidden="true"></span>
+            <!--span class="orange" aria-hidden="true"></span-->
             <div class="service-card_content">
               <h1 class="service-card_title">Plataformas web avanzadas</h1>
 
@@ -126,7 +127,7 @@
 
           <!-- SERVICIO 2 -->
           <div class="service-card" style="display:none;">
-            <span class="orange" aria-hidden="true"></span>
+            <!--span class="orange" aria-hidden="true"></span-->
             <div class="service-card_content">
               <h1 class="service-card_title">Servicio 2</h1>
 
@@ -156,7 +157,7 @@
 
           <!-- SERVICIO 3 -->
           <div class="service-card" style="display:none;">
-            <span class="orange" aria-hidden="true"></span>
+            <!--span class="orange" aria-hidden="true"></span-->
             <div class="service-card_content">
               <h1 class="service-card_title">Servicio 3</h1>
 
@@ -186,7 +187,7 @@
 
           <!-- SERVICIO 4 -->
           <div class="service-card" style="display:none;">
-            <span class="orange" aria-hidden="true"></span>
+            <!--span class="orange" aria-hidden="true"></span-->
             <div class="service-card_content">
               <h1 class="service-card_title">Servicio 4</h1>
 
@@ -216,7 +217,7 @@
 
           <!-- SERVICIO 5 -->
           <div class="service-card" style="display:none;">
-            <span class="orange" aria-hidden="true"></span>
+            <!--span class="orange" aria-hidden="true"></span-->
             <div class="service-card_content">
               <h1 class="service-card_title">Servicio 5</h1>
 
@@ -251,25 +252,8 @@
       </div>
     </section>
 
-    <section id="contacto">
-      <h3>Redes Sociales</h3>
-      <div class="container_social">
-        <div class="social_track">
-          <a href="" class="red_social">Facebook</a>
-          <a href="" class="red_social">Instagram</a>
-          <a href="" class="red_social">WhatsApp</a>
-          <a href="" class="red_social">LinkedIn</a>
-
-          <!-- Duplicado para el loop infinito -->
-          <a href="" class="red_social">Facebook</a>
-          <a href="" class="red_social">Instagram</a>
-          <a href="" class="red_social">WhatsApp</a>
-          <a href="" class="red_social">LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
     <section id="acercade">
+      <h2>Acerca de</h2>
       <div class="contenedor-informacion">
         <!-- Columna Izquierda (Blanca) -->
         <div class="columna-izquierda">
@@ -295,6 +279,7 @@
     </section>
 
     <section id="proyectos">
+      <h2>Proyectos</h2>
       <ul class="proyectos_track">
         <li class="project">
           <img src="" alt="">
@@ -349,7 +334,8 @@
       </ul>
     </section>
 
-    <section id="ayuda"> 
+    <section id="ayuda">
+      <h2>Ayuda</h2>
       <div class="contenedor-preguntas" > 
         <h2>Preguntas frecuentes</h2>
         <ul>
@@ -359,6 +345,24 @@
           <li class="pregunta"><a href="">¿Qué métodos de pago aceptan?</a></li>
           <li class="pregunta"><a href="">¿Cómo puedo ver el estado de mi pedido?</a></li>
         </ul>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Redes Sociales</h2>
+      <div class="container_social">
+        <div class="social_track">
+          <a href="" class="red_social">Facebook</a>
+          <a href="" class="red_social">Instagram</a>
+          <a href="" class="red_social">WhatsApp</a>
+          <a href="" class="red_social">LinkedIn</a>
+
+          <!-- Duplicado para el loop infinito -->
+          <a href="" class="red_social">Facebook</a>
+          <a href="" class="red_social">Instagram</a>
+          <a href="" class="red_social">WhatsApp</a>
+          <a href="" class="red_social">LinkedIn</a>
+        </div>
       </div>
     </section>
 
@@ -377,13 +381,13 @@
   <nav id="nav_inferior" style="display: none;">
     <div class="services-pagination" aria-label="Paginacion de servicios">
       <div class="services-pagination">
-        <a aria-label="inicio"></a>
-        <a aria-label="servicios"></a>
-        <a aria-label="contacto"></a>
-        <a aria-label="acercade"></a>
-        <a aria-label="proyectos"></a>
-        <a aria-label="ayuda"></a>
-        <a aria-label="section_footer"></a>
+        <a aria-label="inicio" title="Inicio"></a>
+        <a aria-label="servicios" title="Servicios"></a>
+        <a aria-label="acercade" title="Acerca de"></a>
+        <a aria-label="proyectos" title="Proyectos"></a>
+        <a aria-label="ayuda" title="Ayuda"></a>
+        <a aria-label="contacto" title="Contacto"></a>
+        <a aria-label="section_footer" title="Footer"></a>
       </div>
     </div>
   </nav>

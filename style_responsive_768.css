@@ -1,28 +1,88 @@
 @media (max-width: 1000px) {
-  /* ----------- SCROLL HORIZONTAL ------------ */
-  body {
-    overflow-x: hidden;
-    overflow-y: auto;
+  :root{
+    --accent:#ff7a00;
+    --orange_sombra: #ffbe82;
+    --ink:#111;
+    --border:rgb(192, 192, 192);
+    --muted:#6b7280;
+    --card:#f3f4f6;
+    --line:#e5e7eb;
+    --radius:18px;
   }
 
-  main {
-    flex-direction: column;
-    height: auto;
+
+  *,
+  *::before,
+  *::after{
+    box-sizing: border-box;
+  }
+
+  /* ----------- SCROLL VERTICAL CONVENCIONAL ------------ */
+  html{
     overflow-x: hidden;
-    overflow-y: visible; /* el body maneja el scroll */
+    overflow-y: auto;
     scroll-snap-type: none;
   }
 
+  body {
+    height: auto;
+    overflow: visible;
+  }
+
+  body::before{
+    position: fixed;
+  }
+
+  main {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-top: 110px;
+  }
+
   section {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: auto;
+    padding: 48px clamp(16px, 4vw, 28px);
+    flex-shrink: 1;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    padding-bottom: 0 !important;
+  }
+
+  section>h2{
+    display: block;
+    font-size: 3rem;
+    color: var(--muted);
+    height: max-content;
+    margin: 30px 0 30px 0 !important;
+  }
+
+  #inicio,
+  #servicios,
+  #contacto,
+  #acercade,
+  #proyectos,
+  #ayuda,
+  #section_footer{
+    width: 100%;
     min-width: 100%;
     height: auto;
-    min-height: 100vh;
-    scroll-snap-align: start;
+    min-height: auto;
+  }
+
+  #ayuda ul{
+    font-size: 1rem;
   }
 
   /* ------------ INICIO ------------*/
   .nav_inicio{
-    height: 300px;
+    display: none;
   }
   .box_main_container{
     flex-direction: column;
@@ -40,6 +100,27 @@
     height: 500px;
   }
 
+   /* ------------ NAV LATERAL ------------*/
+   .nav_lateral{
+    position: fixed;
+   }
+
+
+  /* ------------ NAV SUPERIOR ------------*/
+  #nav_superior{
+    position: fixed;
+    background: linear-gradient(to bottom, var(--card), #f3f4f6d5, #f3f4f675, #ffffff00);
+    height: 100px;
+    z-index: 20;
+  }
+
+  .logo_main{
+    text-shadow: 0 0 20px var(--card);
+  }
+
+  #titulo{
+    display: none;
+  }
 
   /* ------------ NAV INFERIOR ------------*/
   #nav_inferior{
@@ -52,10 +133,6 @@
   }
 
   .services-float{
-    display: none;
-  }
-
-  .logo_main{
     display: none;
   }
 
@@ -83,24 +160,10 @@
     padding-left: 10px;
   }
 
-  main {
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory; /* opcional: snap vertical */
-  }
-
-  section {
-    min-width: 100%;
-    min-height: 100vh;
-    scroll-snap-align: start;
-  }
-
   /* ----- SERVICIOS ----- */
 
   #servicios{
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: visible;
   }
 
   .services-stage{
@@ -127,79 +190,217 @@
     display: none;
   }
 
-  /* -----  ----- */
-
-  #nav_superior{
-    padding: 16px !important;
-  }
-  body.pagina-ayuda #nav_superior{
-    align-items: flex-start;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  body.pagina-ayuda #nav_superior .text-start{
-    font-size: 3.0rem !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    line-height: 1;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  body.pagina-ayuda #titulo{
-    display: block;
-    font-size: 2.5rem;
-    line-height: 1;
-  }
-  body.pagina-ayuda #reloj{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    font-size: 14px;
-    line-height: 1.1;
-    text-align: right;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  body.pagina-ayuda #hora{
-    font-size: 18px;
-  }
-  body.pagina-ayuda #dia{
-    font-size: 14px;
-  }
-  body.pagina-ayuda section{
+  .services-stage{
     min-height: auto;
+    align-items: stretch;
+    justify-content: flex-start;
   }
 
-  body.pagina-ayuda #ayuda{
-    width: 100%;
-    padding-top: 165px;
-    padding-bottom: 24px;
+  .service-card{
+    margin-bottom: 24px;
+    padding: 28px 20px;
   }
-  body.pagina-ayuda .contenedor-mayor{
-    gap: 20px;
-    padding: 12px;
+
+  .service-card_tags{
+    justify-content: flex-start;
+    max-width: 100%;
   }
-  body.pagina-ayuda .contenedor-preguntas{
-    padding: 20px;
-  }
-  body.pagina-ayuda .titulo-preguntas{
-    font-size: 1.8rem;
-  }
-  body.pagina-ayuda #nav_inferior {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+
+  /* ----- CONTACTO ----- */
+
+  .container_social{
     height: auto;
-    padding: 28px 24px;
+    overflow: visible;
+    justify-content: center;
   }
-  body.pagina-ayuda .arrow,
-  body.pagina-ayuda .letter-e {
-    font-size: 5rem;
+
+  .social_track{
+    animation: none;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 12px;
   }
-  body.pagina-ayuda .location,
-  body.pagina-ayuda .copyright {
+
+  .red_social{
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    font-size: 0;
+  }
+
+  .red_social:nth-child(n + 5){
+    display: none;
+  }
+
+  .red_social::before{
+    font-family: "Inter", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1;
+    color: white;
+  }
+
+  .red_social:nth-child(1)::before{
+    content: "f";
+  }
+
+  .red_social:nth-child(2)::before{
+    content: "◎";
+    font-size: 1.65rem;
+  }
+
+  .red_social:nth-child(3)::before{
+    content: "W";
+  }
+
+  .red_social:nth-child(4)::before{
+    content: "in";
     font-size: 1.1rem;
+  }
+
+  /* ----- ACERCA DE ----- */
+
+  #acercade{
+    display: block;
+  }
+
+  .contenedor-informacion{
+    flex-direction: column;
+    align-items: stretch;
+    overflow: visible;
+  }
+
+  .columna-izquierda,
+  .columna-derecha{
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .columna-izquierda{
+    border-right: 4px solid var(--border);
+    border-radius: 20px 20px 0 0;
+    padding: 32px 24px;
+  }
+
+  .columna-derecha{
+    align-items: flex-start;
+    border-radius: 0 0 20px 20px;
+    padding: 32px 24px;
+    z-index: 10;
+  }
+
+  .columna-izquierda.acerca-saliendo {
+    animation: acerca-salida .7s ease forwards;
+  }
+
+  .columna-izquierda.acerca-entrando {
+    animation: acerca-entrada .7s ease forwards;
+  }
+
+  @keyframes acerca-salida {
+    from {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%) scaleY(0.5);
+    }
+  }
+
+  @keyframes acerca-entrada {
+    from {
+      opacity: 0;
+      transform: translateY(100%) scaleY(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+  }
+
+  #acercade .pregunta{
+    justify-content: flex-start;
+    font-size: clamp(1.35rem, 6vw, 2rem);
+  }
+
+  /* ----- PROYECTOS ----- */
+
+  #proyectos{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 110px);
+    min-height: calc(100vh - 110px);
+  }
+
+  #proyectos ul{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+
+  #proyectos .project{
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  #proyectos .project h3{
+    width: auto;
+    flex: 1 1 calc(100% - 98px);
+    margin: 0;
+  }
+
+  #proyectos .project .etiquetas{
+    width: 100%;
+  }
+
+  #proyectos .project .etiquetas{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  #proyectos .project img{
+    width: 84px;
+    height: 84px;
+  }
+
+  /* ----- FOOTER ----- */
+
+  #section_footer{
+    padding: 0;
+    height: max-content;
+    width: 100%;
+    align-content: end;
+    margin-top: 50px;
+  }
+
+  footer {
+    padding: 0;
+    transform: none;
+  }
+
+  footer .content_footer{
+    padding: 40px 0 40px 0;
+  }
+
+  footer .content_footer img{
+    margin-top: auto;
+    max-width: 40%;
+    height: 100px;
+  }
+
+  footer .content_footer .textos{
+    width: 60%;
+    text-align: right;
+    padding: 40px;
+    color: var(--card);
+    font-size: 1.5rem;
   }
 }
