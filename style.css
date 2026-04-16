@@ -4,6 +4,8 @@
 
 :root{
   --accent:#ff7a00;
+  --secondary: #3986E0;
+  --degraded: #012957;
   --orange_sombra: #ffbe82;
   --ink:#111;
   --border:rgb(192, 192, 192);
@@ -11,7 +13,6 @@
   --card:#f3f4f6;
   --line:#e5e7eb;
   --radius:18px;
-  --secondary: blue;
 }
 
 html, body{
@@ -68,7 +69,7 @@ body::before{
 /* -----------  ------------ */
 
 #nav_superior{
-  height: 10vh;
+  height: 15vh;
   padding: 0 20px 0 20px;
   background-color: #00000000;
   width: 100%;
@@ -79,6 +80,9 @@ body::before{
   color: var(--accent);
   flex-direction: row;
   z-index: 10;
+}
+#nav_superior>*{
+  margin-top: auto;
 }
 
 #nav_inferior:empty{
@@ -120,10 +124,11 @@ body::before{
 }
 
 #btn_collapse{
-  font-size: .7rem;
-  padding: 18px 15px 18px 15px;
+  font-size: 3rem;
+  padding: 0;
   border-radius: 100px;
-  border: .5px solid var(--muted);
+  background-color: #00000000;
+  border: none;
   color: var(--muted);
 }
 
@@ -211,7 +216,7 @@ main {
 
 section {
   min-width: 100vw;
-  height: 80vh;
+  height: 75vh;
   padding: 0 20px 0 20px;
   flex-shrink: 0;
   scroll-snap-align: start;
@@ -268,44 +273,200 @@ body.plantilla section {
   text-align: right;
 }
 
+#redes_sociales {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* ← distribuye los iconos uniformemente */
+  align-items: center;           /* ← los centra horizontalmente */
+  left: 20px;
+  bottom: 200px;
+  z-index: 1000;
+  height: 200px;
+  width: 50px;
+  background-color: white;
+  border: 3px solid var(--border);
+  border-radius: 200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ← sombra suave como en la imagen */
+}
+
+#redes_sociales i {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+#redes_sociales i:hover {
+  transform: scale(1.2);
+}
+
+/* Colores individuales por ícono */
+.bi-instagram  { color: #E1306C; }
+.bi-linkedin   { color: #0A66C2; }
+.bi-envelope   { color: #4A90D9; }
+.bi-whatsapp   { color: #25D366; }
+
 #inicio{
   padding-bottom: 2.5%; /* PARTE DE ALTURA DEL INICIO*/
-  padding-top: 2.5%; /* PARTE DE ALTURA DEL INICIO*/
   width: 100vw;
+  height: 85vh;
 }
 
 .nav_inicio{
   display: flex;
   flex-direction: row;
-  height: 30%; /* PARTE DE ALTURA DEL INICIO*/
+  height: 20%; /* PARTE DE ALTURA DEL INICIO*/
   max-height: 50%;
 }
+
+/* ------------ CARRUSEL DE LOGOS (inicio) ------------ */
+
+.logos_carousel {
+  height: 20%; /* PARTE DE ALTURA DEL INICIO */
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.logos_track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+  width: max-content;
+  animation: scroll-logos 18s linear infinite;
+}
+
+.logos_track span {
+  font-family: IBM plex mono, monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--border);
+  white-space: nowrap;
+}
+
+@keyframes scroll-logos {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ------------ ------------ */
 
 .nav_inicio .fila_items:first-child{
   justify-content: right;
 }
 
 .nav_inicio .active{
-  background-color: var(--accent);
+  background-color: var(--secondary);
   color: white;
-  border-color: var(--accent);
+  border-color: var(--secondary);
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
+.nav_inicio .active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, var(--degraded), var(--secondary));
+  border-radius: 50px 0 0 0;
+  z-index: 0;
+  transform: scale(1);
+  transform-origin: bottom right; /* ← arranca desde la esquina inferior derecha */
+  transition: transform .5s ease-in-out;
+}
+
 .box_main_container{
-  min-height: 50%; /* PARTE DE ALTURA DEL INICIO*/
+  height: 60%; /* PARTE DE ALTURA DEL INICIO*/
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding: 0 40px 0 40px;
 }
 
 .intro{
-  width: 60%;
+  width: 100%;
   padding: 20px;
+  text-align: center;
 }
-.intro h5{
-  font-size: 5rem;
+.intro h2{
+  font-size: 500%;
+  color: var(--secondary);
 }
+.title_lighter{
+  font-weight: lighter;
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: emerge-lighter 1s cubic-bezier(0.34, 1.4, 0.64, 1) 0.4s forwards;
+}
+
+@keyframes emerge-lighter {
+  from {
+    max-width: 0;
+    opacity: 0;
+  }
+  to {
+    max-width: 900px;
+    opacity: 1;
+  }
+}
+
+.title_bolder{
+  font-weight: bolder;
+}
+
+.intro h2>span{
+  background: -webkit-linear-gradient(0deg, var(--degraded), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro p{
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+.intro .btnCotizar{
+  position: relative;
+  padding: 10px 50px 10px 50px;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 200px;
+  background: linear-gradient(to right, rgb(39, 39, 39), var(--muted));
+  margin: 0 auto 0 auto;
+  transition: all ease .5s;
+}
+
+.intro .btnCotizar::after {
+  content: 'Cotizar';
+  position: absolute;
+  padding: 10px 50px 10px 50px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, var(--degraded), var(--secondary));
+  opacity: 0;
+  border-radius: 200px;
+  z-index: 1;
+  transition: all ease 1s;
+}
+
+.intro .btnCotizar:hover::after {
+  opacity: 1;
+}
+
 .box_main{
   width: 40%;
   display: flex;
@@ -333,7 +494,7 @@ body.plantilla section {
   padding: 10px;
 }
 
-.box_type_slim{
+.box_type_slim {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -341,19 +502,46 @@ body.plantilla section {
   border: 3px solid var(--border);
   border-radius: 15px;
   font-family: IBM plex mono, monospace;
-  font-size: 90%;
+  font-size: 1.5rem;
   font-weight: 600;
-  color:#6b7280;
+  color: var(--accent);
   background-color: white;
-  transition: all ease .5s;
+  transition: color .5s ease, border-color .5s ease, box-shadow .5s ease;
   cursor: pointer;
+  position: relative;   /* ← necesario */
+  overflow: hidden;     /* ← para que el ::after no se salga del borde redondeado */
 }
 
-.box_type_slim:hover{
-  background-color: var(--accent);
+.box_type_slim::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  width: 100%;
+  height: calc(100% + 1px);
+  background: linear-gradient(to right, var(--degraded), var(--secondary));
+  border-radius: 50px 0 0 0;
+  z-index: 0;
+
+  transform: scale(0);
+  transform-origin: bottom right; /* ← arranca desde la esquina inferior derecha */
+  transition: transform .5s ease-in-out;
+}
+
+.box_type_slim:hover::after {
+  transform: scale(1); /* ← se expande hasta cubrir todo */
+}
+
+.box_type_slim:hover {
   color: white;
-  border-color: var(--accent);
+  border-color: var(--secondary);
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* El texto debe quedar por encima del ::after */
+.box_type_slim > * {
+  position: relative;
+  z-index: 1;
 }
 
 .btn_container{
