@@ -69,7 +69,7 @@ body::before{
 /* -----------  ------------ */
 
 #nav_superior{
-  height: 15vh;
+  height: 10vh;
   padding: 0 20px 0 20px;
   background-color: #00000000;
   width: 100%;
@@ -80,9 +80,6 @@ body::before{
   color: var(--accent);
   flex-direction: row;
   z-index: 10;
-}
-#nav_superior>*{
-  margin-top: auto;
 }
 
 #nav_inferior:empty{
@@ -226,6 +223,47 @@ section>h2{
   display: none;
 }
 
+.header_section{
+  height: calc(15% - 20px);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 0 20px 0 20px;
+}
+
+#titulo{
+  font-size: 20px;
+  padding: 5px 15px 5px 15px;
+  border: 2px solid var(--secondary);
+  border-radius: 100px;
+  font-family: IBM plex mono, monospace;
+  font-weight: bolder;
+  color: var(--muted);
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 20%;
+}
+
+.header_section>p{
+  max-height: 100%;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(to right, var(--degraded), var(--secondary));
+  min-width: calc(80% - 10px);
+  margin-left: 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.body_section{
+  height: 85%;
+}
+
 /* Estilos específicos para plantilla.html */
 body.plantilla {
   overflow: auto;
@@ -256,13 +294,6 @@ body.plantilla section {
   font-weight: 500;
   font-size: 20px;
   color: var(--ink);
-}
-
-#titulo{
-  font-size: 40px;
-  font-family: IBM plex mono, monospace;
-  font-weight: 500;
-  color: var(--muted);
 }
 
 #nav_superior>div{
@@ -636,7 +667,7 @@ body.plantilla section {
     background: rgba(255, 255, 255, 0.85);
   }
   to { 
-    transform: translateX(-60%) scaleX(0) scaleY(0.9);
+    transform: translateX(-60%) scaleX(0) scaleY(1);
     opacity: 0;
     background: #d3d3d3; 
   }
@@ -645,7 +676,7 @@ body.plantilla section {
 /* Entra desde la derecha */
 @keyframes expandFromRight {
   from { 
-    transform: translateX(35%) scaleX(0.5) scaleY(0.7);
+    transform: translateX(35%) scaleX(0.5) scaleY(1);
     background: #d3d3d3;
   }
   to { 
@@ -662,7 +693,7 @@ body.plantilla section {
     background: rgba(255, 255, 255, 0.85);
   }
   to { 
-    transform: translateX(60%) scaleX(0) scaleY(0.9);
+    transform: translateX(60%) scaleX(0) scaleY(1);
     opacity: 0;
     background: #d3d3d3; 
   }
@@ -671,7 +702,7 @@ body.plantilla section {
 /* Entra desde la izquierda */
 @keyframes expandFromLeft {
   from { 
-    transform: translateX(-35%) scaleX(0.5) scaleY(0.7);
+    transform: translateX(-35%) scaleX(0.5) scaleY(1);
     opacity: 0; 
     background: var(--muted); 
   }
@@ -800,7 +831,7 @@ body.plantilla section {
 
 .service-cta{
   width: 5%;
-  min-height: clamp(250px, 32vw, 350px);
+  min-height: 100%;
   padding: 0;
   border: none;
   border-radius: 18px;
